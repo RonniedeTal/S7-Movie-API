@@ -1,0 +1,50 @@
+<div class="container mt-4">
+  @if (movie) {
+    <div class="card movie-card">
+      <img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path"
+           [alt]="movie.title"
+           class="card-img" />
+      <div class="card-body">
+        <h2 class="card-title">{{ movie.title }}</h2>
+        <p><strong>Average:</strong> {{ movie.vote_average }}</p>
+        <p><strong>Overview:</strong> {{ movie.overview }}</p>
+      </div>
+    </div>
+  } @else {
+    <div class="loading">
+      Loading movie details...
+    </div>
+  }
+
+  <h3 class="section-title">Cast:</h3>
+
+  <div class="actor-list">
+    @for (actor of cast; track actor.id) {
+      <div class="actor-item"
+           (mouseenter)="onHover(actor.id)"
+           (mouseleave)="onLeave()">
+        <img [src]="'https://image.tmdb.org/t/p/w200' + actor.profile_path"
+             [alt]="actor.name" />
+        <div class="card-body">
+          <h6 class="card-title">{{ actor.name }}</h6>
+          <p class="card-text">{{ actor.character }}</p>
+        </div>
+
+        @if (hoveredActorId === actor.id) {
+          <div class="movie-popup">
+            <h6>Movies Appereance:</h6>
+            <div class="popup-movie-list">
+              @for (movie of actorMovies; track movie.id) {
+                <div class="movie-item">
+                  <img [src]="'https://image.tmdb.org/t/p/w200' + movie.poster_path"
+                       [alt]="movie.title" />
+                  <p>{{ movie.title }}</p>
+                </div>
+              }
+            </div>
+          </div>
+        }
+      </div>
+    }
+  </div>
+</div>

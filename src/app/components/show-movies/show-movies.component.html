@@ -1,0 +1,22 @@
+<div class="container mt-3">
+  @if (data().length > 0) {
+    <div class="card-container">
+      @for (movie of data(); track movie.id) {
+        <div class="card">
+          <div class="card-body">
+             <a [routerLink]="['/movie-detail/', movie.id]" style="text-decoration: none; color: inherit;">
+  <h3 class="card-title">{{ movie.title }}</h3>
+  <img class="movie-img" [src]="imageBaseUrl + movie.poster_path" alt="{{ movie.title }}">
+  <h4>Average:</h4>
+  <p>{{movie.vote_average}}</p>
+</a>
+          </div>
+        </div>
+      }
+    </div>
+  } @else {
+    <div class="alert alert-info text-center">
+      No movies found.
+    </div>
+  }
+</div>
