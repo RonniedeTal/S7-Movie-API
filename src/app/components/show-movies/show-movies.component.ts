@@ -1,13 +1,14 @@
 import { Component, computed, OnInit } from '@angular/core';
 import { ApiMoviesService } from '../../services/api-movies.service';
 import { RouterLink} from '@angular/router';
+import { InfiniteScrollDirective } from 'ngx-infinite-scroll';
 
 
 
 @Component({
   selector: 'app-show-movies',
   standalone:true,
-  imports: [RouterLink],
+  imports: [RouterLink, InfiniteScrollDirective],
   templateUrl: './show-movies.component.html',
   styleUrl: './show-movies.component.css'
 })
@@ -37,4 +38,11 @@ ngOnInit(): void {
 //     }
 //   })
 // }
+  onScrollDown() {
+    console.log('scrolled down!!');
+  }
+
+  onScrollUp() {
+    console.log('scrolled up!!');
+  }
 }
