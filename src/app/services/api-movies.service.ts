@@ -26,8 +26,8 @@ public getData(): void {
     .subscribe({
       next: response => {
       const currentMovies = this.movies();
-        this.movies.set([...currentMovies, ...response.results]); // Agregar nuevas películas
-        console.log('Películas cargadas página:', this.numPage);
+        this.movies.set([...currentMovies, ...response.results]);
+        console.log( this.numPage);
         
       },
       error: err => {
