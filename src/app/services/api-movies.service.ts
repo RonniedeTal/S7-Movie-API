@@ -11,25 +11,31 @@ import { ActorInterface } from '../actor-interface';
 export class ApiMoviesService {
  private apiUrL=environment.apiUrl;
   private api_key=environment.api_key
+  numPage=1
   constructor(private http:HttpClient) { }
 movies=signal<MovieInterface[]>([])
+
 
 //creo una variable para meter actores
 cast=signal<ActorInterface[]>([])
 
 public getData(): void {
-  if (this.movies().length > 0) return;
+  // if (this.movies().length > 0) return;
 
-  this.http.get<{ results: MovieInterface[] }>(`${this.apiUrL}discover/movie?${this.api_key}`)
+  this.http.get<{ results: MovieInterface[] }>(`${this.apiUrL}discover/movie?${this.api_key}&page=${this.numPage}`)
     .subscribe({
       next: response => {
-        this.movies.set(response.results);
+      const currentMovies = this.movies();
+        this.movies.set([...currentMovies, ...response.results]); // Agregar nuevas películas
+        console.log('Películas cargadas página:', this.numPage);
+        
       },
       error: err => {
         console.error('Error fetching data:', err);
       }
     });
 }
+ 
 //he deañadir el id const
   public getId(id: string): MovieInterface | undefined {
     return this.movies().find(movie => movie.id === Number(id));

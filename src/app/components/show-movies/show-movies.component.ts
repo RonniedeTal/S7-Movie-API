@@ -39,7 +39,8 @@ ngOnInit(): void {
 //   })
 // }
   onScrollDown() {
-    console.log('scrolled down!!');
+     this.apiMoviesService.numPage++;        
+    this.apiMoviesService.getData();
   }
 
   onScrollUp() {
