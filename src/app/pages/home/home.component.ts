@@ -2,11 +2,12 @@ import { Component, OnInit, inject } from '@angular/core';
 import { ShowMoviesComponent } from '../../components/show-movies/show-movies.component';
 import { Router } from '@angular/router';
 import { AuthService } from '../../auth/auth.service';
+import { NavbarComponent } from "../../components/navbar/navbar.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [ShowMoviesComponent],
+  imports: [ShowMoviesComponent, NavbarComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
