@@ -19,6 +19,15 @@ imageBaseUrl: string = 'https://image.tmdb.org/t/p/w500'
 constructor(private apiMoviesService:ApiMoviesService){
   // this.apiMoviesService.getMoviesByActorId()
 }
+  onScrollDown() {
+     this.apiMoviesService.numPage++;        
+    this.apiMoviesService.getData();
+  }
+
+  onScrollUp() {
+    //  this.apiMoviesService.numPage--;        
+    // this.apiMoviesService.getData();
+  }
 ngOnInit(): void {
   // this.dataMovies()
   this.apiMoviesService.getData()
@@ -38,12 +47,5 @@ ngOnInit(): void {
 //     }
 //   })
 // }
-  onScrollDown() {
-     this.apiMoviesService.numPage++;        
-    this.apiMoviesService.getData();
-  }
 
-  onScrollUp() {
-    console.log('scrolled up!!');
-  }
 }
