@@ -9,13 +9,15 @@
     </p>
 
     <label>Contraseña</label>
-    <input type="password" formControlName="password" placeholder="Contraseña" />
+    <input type="password" formControlName="password" placeholder="password" id="pwd" />
+    <input type="checkbox" onclick="pwd.type=this.checked?'text' : 'password' ">
     <p class="error" [class.active]="form.get('password')?.invalid && form.get('password')?.touched">
       La contraseña debe tener al menos 6 caracteres
     </p>
 
     <label>Confirmar Contraseña</label>
-    <input type="password" formControlName="confirmPassword" placeholder="Confirmar contraseña" />
+    <input type="password" formControlName="confirmPassword" placeholder="Confirmar contraseña" id="pwd2"/>
+    <input type="checkbox" onclick="pwd2.type=this.checked?'text' : 'password' ">
     <p class="error" [class.active]="form.get('confirmPassword')?.invalid && form.get('confirmPassword')?.touched">
       Por favor confirma tu contraseña
     </p>

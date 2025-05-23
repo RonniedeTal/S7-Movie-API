@@ -3,11 +3,12 @@ import { ShowMoviesComponent } from '../../components/show-movies/show-movies.co
 import { Router } from '@angular/router';
 import { AuthService } from '../../auth/auth.service';
 import { NavbarComponent } from "../../components/navbar/navbar.component";
+import { FooterComponent } from "../../components/footer/footer.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [ShowMoviesComponent, NavbarComponent],
+  imports: [ShowMoviesComponent, NavbarComponent, FooterComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
