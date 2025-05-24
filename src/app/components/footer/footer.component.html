@@ -1,27 +1,19 @@
-
-
-<footer class="fixed bottom-0 w-full bg-gray-800 text-white px-6 py-4 shadow-inner z-50">
-  <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-sm md:text-base">
-    
- 
-    <div class="text-center md:text-left">
-      <h2 class="font-bold text-white">🧑‍💻 about us</h2>
-      <p class="text-gray-300">made with ❤️ </p>
+<footer class="footer" [class.visible]="showFooter">
+  <div class="content">
+    <div class="about">
+      <h2>🧑‍💻 about us</h2>
+      <p>made with ❤️</p>
     </div>
 
-    
-    <form class="flex flex-col sm:flex-row items-center gap-2">
-      <input type="email" placeholder="your e-mail" class="px-2 py-1 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm" />
-      <button type="submit" class="bg-indigo-600 hover:bg-indigo-500 text-white px-3 py-1 rounded">
-        send ✉️
-      </button>
+    <form class="subscription">
+      <input type="email" placeholder="your e-mail" />
+      <button type="submit">send ✉️</button>
     </form>
 
-   
-    <div class="flex space-x-4">
-      <a href="#" class="hover:text-indigo-400">X</a>
-      <a href="#" class="hover:text-blue-500">Facebook</a>
-      <a href="#" class="hover:text-pink-400">Instagram</a>
+    <div class="socials">
+      <a href="#">X</a>
+      <a href="#">Facebook</a>
+      <a href="#">Instagram</a>
     </div>
   </div>
 </footer>

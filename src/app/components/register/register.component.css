@@ -1,0 +1,201 @@
+/* --- Global Styling for the page host --- */
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  /* A lighter, more serene background gradient */
+  background: linear-gradient(135deg, #e0f2f7 0%, #d1e8ed 100%);
+  font-family: 'Roboto', sans-serif; /* Slightly different font for variety */
+  overflow: hidden;
+  position: relative;
+}
+
+/* --- Background Overlay with a different image --- */
+:host::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  /* A subtle pattern or softer image */
+  background: url('https://images.unsplash.com/photo-1518655292350-f13158c89b25?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center/cover no-repeat;
+  opacity: 0.08; /* Slightly less opaque */
+  z-index: 0;
+  animation: fadeBackground 2s ease-out; /* Keep the fade-in animation */
+}
+
+/* --- Animations (reused) --- */
+@keyframes fadeBackground {
+  from { opacity: 0; }
+  to { opacity: 0.08; }
+}
+
+.register-container {
+  position: relative;
+  z-index: 1;
+  /* Slightly different background color and transparency */
+  background: rgba(255, 255, 255, 0.85);
+  padding: 35px 30px; /* Slightly less padding */
+  border-radius: 12px; /* Slightly less rounded corners */
+  /* A softer, more diffused shadow */
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(8px); /* Slightly less blur */
+  max-width: 420px; /* Slightly wider */
+  width: 100%;
+  animation: fadeInUp 0.8s ease forwards;
+  opacity: 0;
+  transform: translateY(20px);
+  /* Add a subtle inner border for a layered look */
+  border: 1px solid rgba(200, 200, 200, 0.4);
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- Headings --- */
+h2 {
+  margin-bottom: 28px; /* More space below the heading */
+  font-size: 24px; /* Slightly larger heading */
+  color: #2c3e50; /* Darker, more prominent color */
+  text-align: center;
+  font-weight: 600; /* Bolder */
+}
+
+/* --- Form Group & Labels --- */
+form label { /* Target labels directly within the form */
+  display: block;
+  font-size: 13px; /* Slightly smaller font for labels */
+  margin-bottom: 5px;
+  color: #555; /* Softer label color */
+  font-weight: 500; /* Semi-bold labels */
+  text-align: left; /* Align labels to the left */
+}
+
+/* --- Input Fields --- */
+form input[type="email"],
+form input[type="password"] {
+  width: 100%;
+  padding: 11px 14px; /* Adjusted padding */
+  border: 1px solid #dcdcdc; /* Lighter border */
+  border-radius: 8px; /* More rounded inputs */
+  background-color: #ffffff; /* Pure white background */
+  font-size: 15px; /* Slightly larger input text */
+  transition: border-color 0.2s, box-shadow 0.2s;
+  margin-bottom: 18px; /* Space between inputs */
+}
+
+form input[type="email"]:focus,
+form input[type="password"]:focus {
+  border-color: #92b0e6; /* Blueish focus border */
+  box-shadow: 0 0 0 3px rgba(146, 176, 230, 0.25); /* Blueish glow */
+  outline: none;
+}
+
+/* --- Show Password Checkbox & Text --- */
+form input[type="checkbox"] {
+  accent-color: #8da6e3; /* Light blue checkbox */
+  margin-top: -10px; /* Adjust as needed to align with text */
+  margin-right: 5px;
+}
+
+form span { /* Style for "Show Password" text */
+  font-size: 13px;
+  color: #666;
+  vertical-align: middle; /* Align with checkbox */
+}
+
+/* --- Error Messages --- */
+p.error { /* Targeting the existing error class directly */
+  font-size: 12.5px;
+  color: #e74c3c; /* A standard red for errors */
+  margin-top: -12px; /* Pull it up a bit closer to the input */
+  margin-bottom: 15px; /* Space before next element */
+  text-align: left;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+p.error.active {
+  opacity: 1; /* Make visible when active */
+}
+
+/* --- General Error Message (for global errors) --- */
+.register-container > p.error { /* Specificity for the global error at the bottom */
+    margin-top: 20px;
+    margin-bottom: 0;
+    text-align: center;
+    background-color: #fff3f3; /* Light red background */
+    border-left: 4px solid #e74c3c;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 13px;
+    color: #c0392b;
+}
+
+/* --- Buttons --- */
+button[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px; /* Slightly larger button text */
+  border: none;
+  border-radius: 8px; /* More rounded buttons */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 25px; /* More space above the button */
+  background-color: #aeb8eb; /* A distinct light blue-purple */
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(174, 184, 235, 0.4); /* Subtle shadow */
+}
+
+button[type="submit"]:hover:not(:disabled) {
+  background-color: #8da1e3; /* Darker blue on hover */
+  box-shadow: 0 4px 12px rgba(141, 161, 227, 0.5);
+  transform: translateY(-1px);
+}
+
+button[type="submit"]:disabled {
+  background-color: #d1d8e8; /* Lighter disabled state */
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+/* --- Register Link (for "Already have an account?") --- */
+.register-container > p:last-child { /* Target the last paragraph for consistency */
+  text-align: center;
+  margin-top: 25px;
+  font-size: 13.5px;
+  color: #666;
+}
+
+.register-container > p:last-child a {
+  color: #8da6e3; /* A different shade of blue for the link */
+  text-decoration: none; /* No underline by default */
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.register-container > p:last-child a:hover {
+  text-decoration: underline; /* Underline on hover */
+  color: #6a88d7;
+}
+
+/* --- Fade Out Animation (reused) --- */
+.fade-out {
+  animation: fadeOut 0.6s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1; /* Corrected initial opacity */
+    transform: scale(1) translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95) translateY(20px);
+  }
+}

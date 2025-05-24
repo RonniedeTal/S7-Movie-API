@@ -21,6 +21,7 @@ export class LoginComponent {
   fb: FormBuilder = inject(FormBuilder);
   authService: AuthService = inject(AuthService);
   router: Router = inject(Router);
+  isFadingOut=false
 
   form = this.fb.nonNullable.group({
     email: [
@@ -38,7 +39,8 @@ export class LoginComponent {
 
     this.authService.login(email, password).subscribe({
       next: () => {
-        this.router.navigateByUrl('/home');
+         this.isFadingOut = true;
+      setTimeout(() => this.router.navigateByUrl('/home'), 500)
       },
       error: (error) => {
         this.error = true;
@@ -49,8 +51,8 @@ export class LoginComponent {
 
   guestLogin(): void {
     const values = {
-      email: 'guest@mail.com',  
-      password: '123456'        
+      email: 'guest1@mail.com',  
+      password: 'ASkRonniedeTal1'        
     };
 
     this.form.patchValue(values);

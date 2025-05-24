@@ -30,7 +30,7 @@ onSubmit():void{
 
   if (password !== confirmPassword){
     this.error=true;
-    console.error("las contraseñas no coinciden guapi")
+    console.error("password doesn't match")
     return
   }
 
